@@ -117,15 +117,16 @@ long LinuxParser::ActiveJiffies(int pid) {
   std::ifstream filestream(kProcDirectory + std::to_string(pid) + kStatFilename);
   string line;
   long total = 0;
-  long value = 0;
+  string value;
   if(filestream.is_open()) {
     getline(filestream, line);
     std::replace(line.begin(), line.end(), ':', ' ');
     std::istringstream linestream(line);
+    //std::cout << line << std::endl;
     for(int i = 0; i < 22; i++){
       linestream >> value;
       if(i == 13 || i == 14 || i == 15 || i == 16){
-        total += value;
+        total += stol(value);
       }
     }
   }
@@ -312,7 +313,7 @@ string LinuxParser::User(int pid) {
 long LinuxParser::UpTime(int pid) {   
   std::ifstream filestream(kProcDirectory + std::to_string(pid) + kStatFilename);
   string line;
-  long value;
+  string value;
   if(filestream.is_open()) {
     getline(filestream, line);
     std::replace(line.begin(), line.end(), ':', ' ');
@@ -320,7 +321,8 @@ long LinuxParser::UpTime(int pid) {
     for(int i = 0; i < 22; i++){
       linestream >> value;
     }
-    return UpTime() - value / sysconf(_SC_CLK_TCK); 
+    //std::cout << "system uptime " << UpTime() << "starttime " << value << "real is " << std::to_string(stol(value) / sysconf(_SC_CLK_TCK)) << std::endl;
+    return UpTime() * sysconf(_SC_CLK_TCK) - stol(value); 
   }
   return 0; 
 }

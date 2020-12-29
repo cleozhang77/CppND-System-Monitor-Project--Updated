@@ -8,4 +8,7 @@
 int main() {
   System system;
   NCursesDisplay::Display(system);
+  //for(auto p : system.Processes()){
+  // std::cout<< p.CpuUtilization() << std::endl;
+  //}
 }

@@ -22,11 +22,15 @@ Processor& System::Cpu() { return cpu_; }
 // TODO: Return a container composed of the system's processes
 vector<Process>& System::Processes() { 
   vector<int> pids = LinuxParser::Pids();
+  // Clean vector processes everytime when called, to avoid push duplicate process into this vector
+  processes_ = {};
   for(auto pid : pids){
     Process process(pid);
     processes_.push_back(process);
   }
+  // sort the processes vector in acsending order
   std::sort(processes_.begin(), processes_.end(), [](Process& a, Process& b){return b<a;});
+  
   return processes_; 
 }
 
@@ -57,5 +61,6 @@ int System::TotalProcesses() {
 
 // TODO: Return the number of seconds since the system started running
 long int System::UpTime() { 
+  // Time unit is second
   return LinuxParser::UpTime();
 }
