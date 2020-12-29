@@ -38,4 +38,6 @@ This project uses [Make](https://www.gnu.org/software/make/). The Makefile has f
 
 5. Implement the `System`, `Process`, and `Processor` classes, as well as functions within the `LinuxParser` namespace.
 
-6. Submit!
+6. To push the code into https://github.com/cleozhang77/CppND-System-Monitor-Project--Updated.git, which is different from udacity origin, use `git remote set-url origin https://github.com/cleozhang77/CppND-System-Monitor-Project--Updated.git` to set push to target. Use `git remote -v` to verify the the remote.
+
+7. Submit!
