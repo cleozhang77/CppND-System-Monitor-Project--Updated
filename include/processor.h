@@ -7,6 +7,10 @@ class Processor {
 
   // TODO: Declare any necessary private members
  private:
+  long prevact{0};
+  long prevtotal{0};
+  long curact{0};
+  long curtotal{0};
 };
 
 #endif
