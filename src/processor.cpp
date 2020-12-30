@@ -1,7 +1,8 @@
 #include "processor.h"
 #include "linux_parser.h"
 
-// TODO: Return the aggregate CPU utilization
+// Return the aggregate CPU utilization
+// Use float, also can change to double for better precision
 float Processor::Utilization() { 
   prevact = curact;
   prevtotal = curtotal;

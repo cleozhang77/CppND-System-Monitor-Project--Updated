@@ -11,4 +11,6 @@ int main() {
   //for(auto p : system.Processes()){
   // std::cout<< p.CpuUtilization() << std::endl;
   //}
+  //std::cout << LinuxParser::TotalProcesses() << std::endl;
+  //std::cout << LinuxParser::MemoryUtilization() << std::endl;
 }

@@ -11,12 +11,9 @@
 #include "system.h"
 #include "linux_parser.h"
 
-using std::set;
-using std::size_t;
-using std::string;
-using std::vector;
+using namespace std;
 
-// TODO: Return the system's CPU
+//Return the system's CPU
 Processor& System::Cpu() { return cpu_; }
 
 // TODO: Return a container composed of the system's processes
@@ -25,8 +22,7 @@ vector<Process>& System::Processes() {
   // Clean vector processes everytime when called, to avoid push duplicate process into this vector
   processes_ = {};
   for(auto pid : pids){
-    Process process(pid);
-    processes_.push_back(process);
+    processes_.push_back(pid);
   }
   // sort the processes vector in acsending order
   std::sort(processes_.begin(), processes_.end(), [](Process& a, Process& b){return b<a;});
